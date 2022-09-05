@@ -1,6 +1,10 @@
 import { NextPage } from "next";
+import { requireAuth } from "../utils/requireAuth";
 import { trpc } from "../utils/trpc";
 
+export const getServerSideProps = requireAuth(async (ctx) => {
+  return { props: {} };
+});
 const GreetingPage: NextPage = () => {
   const { data, isLoading, error } = trpc.useQuery(["greetings.hello"]);
 

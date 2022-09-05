@@ -15,6 +15,12 @@ model User {
   username  String   @unique
   email     String   @unique
   password  String
+  role RoleEnumType? @default(user)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum RoleEnumType {
+  user
+  admin
 }
